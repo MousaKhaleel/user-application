@@ -42,6 +42,7 @@ app.delete('/delete/:id',function(req,res){
     var data= fs.readFileSync(__dirname+"/users.json");
     data= JSON.parse(String(data))
     delete data['user'+req.params.id]
+    // fs.writeFileSync(__dirname + "/users.json", JSON.stringify(data)); //actually delete
     res.send(data)
 })
 
@@ -57,6 +58,7 @@ app.post('/add',urlEncoded,function(req,res){
     var data= fs.readFileSync(__dirname+"/users.json")
     data=JSON.parse(String(data))
     data['u4']=newUser
+    fs.writeFileSync(__dirname + "/users.json", JSON.stringify(data)); //actually add
     res.send(data)
 });
 
