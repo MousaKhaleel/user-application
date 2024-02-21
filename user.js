@@ -58,7 +58,7 @@ app.post('/add',urlEncoded,function(req,res){
     var data= fs.readFileSync(__dirname+"/users.json")
     data=JSON.parse(String(data))
     data['u4']=newUser
-    fs.writeFileSync(__dirname + "/users.json", JSON.stringify(data)); //actually add
+    // fs.writeFileSync(__dirname + "/users.json", JSON.stringify(data)); //actually add
     res.send(data)
 });
 
