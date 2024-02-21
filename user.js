@@ -22,42 +22,30 @@ app.get('/list',function(req,res){
     var data= fs.readFileSync(__dirname+'/users.json')
     res.send(String(data))
 })
-// done
-// //////////////////redo////////////////////
+// //////////////////////////////////////
 app.get('/user/:id',function(req,res){
+    var arr =["1", "2", "3"];
 
-    var arr =["1", "2 ", "3"]
-    if (arr.includes(String(req.params.id)))
-    {
-    var data= fs.readFileSync(__dirname+"/users.json") //as byte
-    data= JSON.parse(String(data))
-    console.log(data)
-    var user = data['user'+req.params.id]
-    console.log(user)
-
+    if (arr.includes(String(req.params.id))){
+    var data= fs.readFileSync(__dirname+"/users.json");
+    data= JSON.parse(String(data));
+    var user = data['user'+req.params.id];
     res.send(user)
     }
-    else
-    {
-      res.send("user id error")
+    else{
+      res.send("id d.n.e")
     }
-   
-})/*{
-    var data=fs.readFileSync(__dirname+'/users.json')
-    data= JSON.parse(String(data))
-    res.send('user is '+ data['user'+req.params.id])
-})*/
+});
 
-// ////////////////redo//////////////////////
+// //////////////////////////////////////
 app.delete('/delete/:id',function(req,res){
-    var data= fs.readFileSync(__dirname+"/users.json") //as byte
+    var data= fs.readFileSync(__dirname+"/users.json");
     data= JSON.parse(String(data))
-    // var user = data['user'+req.params.id]
     delete data['user'+req.params.id]
     res.send(data)
 })
 
-// //////////////redo////////////////////////
+// //////////////////////////////////////
 var bodyParser=require('body-parser');
 var urlEncoded=bodyParser.urlencoded({extended:false});
 
@@ -70,11 +58,7 @@ app.post('/add',urlEncoded,function(req,res){
     data=JSON.parse(String(data))
     data['u4']=newUser
     res.send(data)
-})
-
-
-
-
+});
 
 
 // //////////////////////////////////////
